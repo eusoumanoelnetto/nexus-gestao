@@ -6,6 +6,19 @@
     <title>Nexus Gestão | Organize sua vida financeira sem complicação</title>
     <meta name="description" content="O controle que você precisa, na velocidade que você vive. O Nexus Gestão simplifica tudo em um só lugar. Comece agora grátis." />
     <meta name="theme-color" content="#ffffff" />
+    <script>
+      // Restores SPA route when GitHub Pages redirects unknown paths to /?p=...
+      (function () {
+        var q = window.location.search;
+        if (q && q.indexOf('?p=') === 0) {
+          var path = q
+            .slice(3)
+            .replace(/~and~/g, '&')
+            .replace(/%2F/g, '/');
+          window.history.replaceState(null, '', path + window.location.hash);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

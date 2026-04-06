@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecionando...</title>
+    <script>
+      // GitHub Pages SPA fallback: redirects unknown paths back to index preserving route.
+      (function () {
+        var l = window.location;
+        var path = l.pathname + l.search + l.hash;
+        var target = '/?p=' + encodeURIComponent(path).replace(/%26/g, '~and~');
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
