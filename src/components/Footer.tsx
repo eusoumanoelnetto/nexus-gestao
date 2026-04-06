@@ -12,8 +12,8 @@ export const Footer = () => {
           </div>
           
           <div className="flex gap-8 text-sm font-medium text-gray-500">
-            <Link to="/termos" className="hover:text-gray-900 transition-colors">Termos</Link>
-            <Link to="/privacidade" className="hover:text-gray-900 transition-colors">Privacidade</Link>
+            <Link to="/termo-servico" className="hover:text-gray-900 transition-colors">Termos</Link>
+            <Link to="/politica-privacidade" className="hover:text-gray-900 transition-colors">Privacidade</Link>
             <a href="mailto:suporte@nexusgestao.com.br" className="hover:text-gray-900 transition-colors">Contato</a>
           </div>
           
