@@ -23,7 +23,7 @@ export const FinalCTA = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 bg-gray-900 hover:bg-gray-800 text-white text-xl font-bold rounded-full transition-all shadow-2xl shadow-gray-900/20 group"
           >
-            👉 Assinar por R$ 9,99/mês
+            👉 Falar com Consultor
           </motion.a>
           <p className="mt-8 text-sm text-gray-500 font-medium">Acesso completo por apenas R$ 9,99 mensais. Cancele quando quiser.</p>
         </motion.div>

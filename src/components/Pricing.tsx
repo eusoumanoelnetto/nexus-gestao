@@ -33,7 +33,7 @@ export const Pricing = () => {
             rel="noopener noreferrer"
             className="block w-full py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-xl transition-colors"
           >
-            Assinar Agora
+            Falar com Consultor
           </motion.a>
         </div>
       </div>

@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Zap, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { APP_LINK } from "../constants";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const navLinks = [
     { name: "Solução", href: "#solucao" },
@@ -19,6 +22,11 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
+
+    if (!isHome) {
+      setActiveSection("");
+      return;
+    }
 
     // Intersection Observer to track active section
     const observerOptions = {
@@ -46,24 +54,24 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
     };
-  }, []);
+  }, [isHome]);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3 shadow-sm' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center shadow-md">
               <Zap className="text-white w-5 h-5 fill-current" />
             </div>
             <span className="text-xl font-display font-bold text-gray-900 tracking-tight">Nexus Gestão</span>
-          </div>
+          </Link>
           
           <div className="hidden md:flex items-center gap-1 bg-gray-100/50 p-1 rounded-full border border-gray-200/50">
             {navLinks.map((link) => (
               <a 
                 key={link.href}
-                href={link.href} 
+                href={isHome ? link.href : `/${link.href}`} 
                 className={`relative px-4 py-1.5 text-sm font-medium transition-colors rounded-full ${
                   activeSection === link.href ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
                 }`}
@@ -89,7 +97,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               className="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-full transition-all shadow-lg shadow-gray-900/20"
             >
-              Começar agora
+              Falar com Consultor
             </motion.a>
           </div>
 
@@ -141,7 +149,7 @@ export const Navbar = () => {
               {navLinks.map((link) => (
                 <a 
                   key={link.href}
-                  href={link.href} 
+                  href={isHome ? link.href : `/${link.href}`} 
                   onClick={() => setIsOpen(false)} 
                   className={`block px-4 py-3 rounded-xl font-medium transition-all ${
                     activeSection === link.href 
@@ -159,7 +167,7 @@ export const Navbar = () => {
                   rel="noopener noreferrer"
                   className="block w-full text-center px-5 py-4 bg-gray-900 text-white font-bold rounded-xl shadow-lg shadow-gray-900/20"
                 >
-                  Começar agora
+                  Falar com Consultor
                 </a>
               </div>
             </div>

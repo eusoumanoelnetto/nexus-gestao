@@ -1,4 +1,5 @@
 import { Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -11,9 +12,9 @@ export const Footer = () => {
           </div>
           
           <div className="flex gap-8 text-sm font-medium text-gray-500">
-            <a href="#" className="hover:text-gray-900 transition-colors">Termos</a>
-            <a href="#" className="hover:text-gray-900 transition-colors">Privacidade</a>
-            <a href="#" className="hover:text-gray-900 transition-colors">Contato</a>
+            <Link to="/termos" className="hover:text-gray-900 transition-colors">Termos</Link>
+            <Link to="/privacidade" className="hover:text-gray-900 transition-colors">Privacidade</Link>
+            <a href="mailto:suporte@nexusgestao.com.br" className="hover:text-gray-900 transition-colors">Contato</a>
           </div>
           
           <p className="text-sm text-gray-400">

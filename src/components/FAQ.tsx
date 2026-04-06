@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     question: "Meus dados estão seguros?",
-    answer: "Segurança é nossa prioridade. Utilizamos criptografia de ponta a ponta e os padrões mais modernos de autenticação para garantir que apenas você tenha acesso às suas informações financeiras."
+    answer: "Segurança é nossa prioridade. Utilizamos criptografia de ponta a ponta e os padrões mais rigorosos de proteção para garantir que apenas você tenha acesso às suas informações financeiras."
   },
   {
     question: "Posso cancelar a qualquer momento?",
-    answer: "Com certeza. Não temos contratos de fidelidade. Você pode cancelar sua assinatura Pro a qualquer momento diretamente nas configurações da sua conta, sem burocracia."
+    answer: "Com certeza. Não temos contratos de fidelidade. Você pode solicitar o cancelamento da sua assinatura a qualquer momento através do nosso suporte, sem burocracia."
   },
   {
     question: "O app funciona em qualquer dispositivo?",

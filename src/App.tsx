@@ -4,6 +4,7 @@
  */
 
 import { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Lazy load components for better performance
 const Navbar = lazy(() => import("./components/Navbar").then(m => ({ default: m.Navbar })));
@@ -17,6 +18,11 @@ const Pricing = lazy(() => import("./components/Pricing").then(m => ({ default: 
 const FAQ = lazy(() => import("./components/FAQ").then(m => ({ default: m.FAQ })));
 const FinalCTA = lazy(() => import("./components/FinalCTA").then(m => ({ default: m.FinalCTA })));
 const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
+const ScrollToTop = lazy(() => import("./components/ScrollToTop").then(m => ({ default: m.ScrollToTop })));
+
+// Pages
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy").then(m => ({ default: m.PrivacyPolicy })));
+const TermsOfService = lazy(() => import("./pages/TermsOfService").then(m => ({ default: m.TermsOfService })));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -25,25 +31,36 @@ const LoadingFallback = () => (
   </div>
 );
 
+const Home = () => (
+  <main>
+    <Hero />
+    <ProblemSolution />
+    <Features />
+    <ProofBenefits />
+    <VisualDemo />
+    <Testimonials />
+    <Pricing />
+    <FAQ />
+    <FinalCTA />
+  </main>
+);
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Suspense fallback={<LoadingFallback />}>
-        <Navbar />
-        <main>
-          <Hero />
-          <ProblemSolution />
-          <Features />
-          <ProofBenefits />
-          <VisualDemo />
-          <Testimonials />
-          <Pricing />
-          <FAQ />
-          <FinalCTA />
-        </main>
-        <Footer />
-      </Suspense>
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen bg-white">
+        <Suspense fallback={<LoadingFallback />}>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/privacidade" element={<PrivacyPolicy />} />
+            <Route path="/termos" element={<TermsOfService />} />
+          </Routes>
+          <Footer />
+        </Suspense>
+      </div>
+    </Router>
   );
 }
 

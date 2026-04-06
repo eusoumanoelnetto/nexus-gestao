@@ -22,8 +22,8 @@ export const Features = () => {
       bg: "bg-yellow-50"
     },
     {
-      title: "Seguro com autenticação moderna",
-      description: "Seus dados protegidos com os melhores padrões de segurança do mercado.",
+      title: "Segurança e Privacidade",
+      description: "Seus dados financeiros protegidos com os mais rigorosos padrões de segurança.",
       icon: <ShieldCheck className="w-6 h-6 text-green-600" />,
       bg: "bg-green-50"
     },
