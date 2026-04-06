@@ -1,27 +1,50 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-const queryClient = new QueryClient();
+import { lazy, Suspense } from "react";
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+// Lazy load components for better performance
+const Navbar = lazy(() => import("./components/Navbar").then(m => ({ default: m.Navbar })));
+const Hero = lazy(() => import("./components/Hero").then(m => ({ default: m.Hero })));
+const ProblemSolution = lazy(() => import("./components/ProblemSolution").then(m => ({ default: m.ProblemSolution })));
+const Features = lazy(() => import("./components/Features").then(m => ({ default: m.Features })));
+const ProofBenefits = lazy(() => import("./components/ProofBenefits").then(m => ({ default: m.ProofBenefits })));
+const VisualDemo = lazy(() => import("./components/VisualDemo").then(m => ({ default: m.VisualDemo })));
+const Testimonials = lazy(() => import("./components/Testimonials").then(m => ({ default: m.Testimonials })));
+const Pricing = lazy(() => import("./components/Pricing").then(m => ({ default: m.Pricing })));
+const FAQ = lazy(() => import("./components/FAQ").then(m => ({ default: m.FAQ })));
+const FinalCTA = lazy(() => import("./components/FinalCTA").then(m => ({ default: m.FinalCTA })));
+const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
+
+// Simple loading fallback
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="w-8 h-8 border-4 border-gray-900 border-t-transparent rounded-full animate-spin" />
+  </div>
 );
 
-export default App;
+export default function App() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Suspense fallback={<LoadingFallback />}>
+        <Navbar />
+        <main>
+          <Hero />
+          <ProblemSolution />
+          <Features />
+          <ProofBenefits />
+          <VisualDemo />
+          <Testimonials />
+          <Pricing />
+          <FAQ />
+          <FinalCTA />
+        </main>
+        <Footer />
+      </Suspense>
+    </div>
+  );
+}
+
+
