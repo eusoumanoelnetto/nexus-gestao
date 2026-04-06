@@ -4,8 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-// O nome do repositório deve ser igual ao do GitHub
-const repoName = "nexus-gestao";
+
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -16,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  base: `/${repoName}/`,
+  base: '/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
