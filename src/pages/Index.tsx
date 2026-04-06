@@ -1,21 +1,21 @@
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
-import Benefits from "@/components/landing/Benefits";
+import ProblemSolution from "@/components/landing/ProblemSolution";
 import Features from "@/components/landing/Features";
+import Benefits from "@/components/landing/Benefits";
 import Demo from "@/components/landing/Demo";
-import Trust from "@/components/landing/Trust";
 import CtaFinal from "@/components/landing/CtaFinal";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <Benefits />
+      <ProblemSolution />
       <Features />
+      <Benefits />
       <Demo />
-      <Trust />
       <CtaFinal />
       <Footer />
     </div>
